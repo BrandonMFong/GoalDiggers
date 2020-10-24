@@ -2,12 +2,12 @@
  
 void setup()
 {
-	init_7SegmentDisplay();
+//	init_7SegmentDisplay();
  
 }
 
 // This is the MAIN thread
 void loop()
 {
-	Display(); 
+//	Display(); 
 }
