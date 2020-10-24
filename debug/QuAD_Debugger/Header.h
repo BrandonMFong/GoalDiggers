@@ -1,6 +1,7 @@
 #include "debugger.h"
-
+using namespace std;
 //https://lastminuteengineers.com/esp8266-nodemcu-arduino-tutorial/
+//https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html
 // Define prototypes 
 void init_7SegmentDisplay();
 void SetSevenSegmentDisplay(int value);
@@ -23,18 +24,18 @@ volatile int CurrentState; // test value
 
 // Segment control 
 int pinD1 = 10; // GPIO10
-int pinD2 = 16; // GPIO16
-int pinD3 = 5;  // GPIO5
-int pinD4 = 4;  // GPIO4
+//int pinD2 = 16; // GPIO16
+//int pinD3 = 5;  // GPIO5
+//int pinD4 = 4;  // GPIO4
 
 // LED segment control
 int pinA = 14;  // GPIO14
 int pinB = 0;   // GPIO0
-int pinC = 8;   // GPIO8
-int pinD = 7;   // GPIO7
-int pinE = 6;   // GPIO6
+int pinC = 13;   // GPIO13
+int pinD = 4;   // GPIO4
+int pinE = 12;   // GPIO12
 int pinF = 2;   // GPIO2
-int pinG = 9;   // GPIO9
+int pinG = 15;   // GPIO15
 
 volatile uint8_t ssdReg; // IMPORTANT
 volatile int idx; // IMPORTANT
@@ -46,16 +47,16 @@ void init_7SegmentDisplay()
 {
     // init segment output pin 
     pinMode(pinD1, OUTPUT);
-    pinMode(pinD2, OUTPUT);
-    pinMode(pinD3, OUTPUT);
-    pinMode(pinD4, OUTPUT);
-    pinMode(pinA, OUTPUT);
-    pinMode(pinB, OUTPUT);
-    pinMode(pinC, OUTPUT);
-    pinMode(pinD, OUTPUT);
-    pinMode(pinE, OUTPUT);
-    pinMode(pinF, OUTPUT);
-    pinMode(pinG, OUTPUT);
+    //  pinMode(pinD2, OUTPUT);
+    //  pinMode(pinD3, OUTPUT);
+    //  pinMode(pinD4, OUTPUT);
+    pinMode(pinA, OUTPUT); // good
+    pinMode(pinB, OUTPUT); // good
+    pinMode(pinC, OUTPUT); // good
+    pinMode(pinD, OUTPUT); // good
+    pinMode(pinE, OUTPUT); // good
+    pinMode(pinF, OUTPUT); // good
+    pinMode(pinG, OUTPUT); // good
 
     ssdReg = 0x01; // init the value of the state 
     CurrentState = 0x00;
@@ -67,7 +68,7 @@ void Display()
     switch (CurrentState)
     {
     case AQIDisplay:
-        SetSevenSegmentDisplay(1); // test value
+        SetSevenSegmentDisplay(2); // test value
         break;
     case TempDisplay:
         SetSevenSegmentDisplay(100);
@@ -96,16 +97,16 @@ void AssignSeg()
     uint8_t forD1 = (ssdReg >> 3) & 0x01;
     digitalWrite(pinD1, GetOutputValue(forD1));   // D1
     uint8_t forD2 = (ssdReg >> 2) & 0x01;
-    digitalWrite(pinD2, GetOutputValue(forD2));   // D2
+    //  digitalWrite(pinD2, GetOutputValue(forD2));   // D2
     uint8_t forD3 = (ssdReg >> 1) & 0x01;
-    digitalWrite(pinD3, GetOutputValue(forD3));   // D3
+    //  digitalWrite(pinD3, GetOutputValue(forD3));   // D3
     uint8_t forD4 = (ssdReg >> 0) & 0x01;
-    digitalWrite(pinD4, GetOutputValue(forD4));   // D4
+    //  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
 
-    // since the segment register only contains one bit (assuming the register isn't complimented 
-    // i can use the position of that bit to determine with segment should be on 
-    // 1000 = 8, log2(8) = 3 
-    // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
+      // since the segment register only contains one bit (assuming the register isn't complimented 
+      // i can use the position of that bit to determine with segment should be on 
+      // 1000 = 8, log2(8) = 3 
+      // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
     idx = (log(ssdReg) / log(2)); // Get the log base 2
 
   //  ssdReg = ~ssdReg; // revert
@@ -170,16 +171,16 @@ void ExtractSegmentValues(int val, int index_inner, int MAX)
 // so 1'b xABC DEFG
 uint8_t SSDValue[10] =
 {
-  0x7E, // 0111 1110 = 0 
-  0x60, // 0110 0000 = 1
-  0x6D, // 0110 1101 = 2
-  0x79, // 0111 1001 = 3
-  0x33, // 0011 0011 = 4
-  0x5B, // 0101 1011 = 5
-  0x5F, // 0101 1111 = 6 
-  0x70, // 0111 0000 = 7
-  0x7F, // 0111 1111 = 8
-  0x73 // 0111 0011 = 9 
+  ~0x7E, // 0111 1110 = 0 
+  ~0x60, // 0110 0000 = 1
+  ~0x6D, // 0110 1101 = 2
+  ~0x79, // 0111 1001 = 3
+  ~0x33, // 0011 0011 = 4
+  ~0x5B, // 0101 1011 = 5
+  ~0x5F, // 0101 1111 = 6 
+  ~0x70, // 0111 0000 = 7
+  ~0x7F, // 0111 1111 = 8
+  ~0x73 // 0111 0011 = 9 
 };
 // assuming the val is less then 10
 // that means its in between 0 .. 9

@@ -35,7 +35,7 @@ int pinC = 13;   // GPIO13
 int pinD = 4;   // GPIO4
 int pinE = 12;   // GPIO12
 int pinF = 2;   // GPIO2
-int pinG = 9;   // GPIO9
+int pinG = 15;   // GPIO15
 
 volatile uint8_t ssdReg; // IMPORTANT
 volatile int idx; // IMPORTANT
@@ -68,7 +68,7 @@ void Display()
   switch(CurrentState)
   {
     case AQIDisplay: 
-      SetSevenSegmentDisplay(1); // test value
+      SetSevenSegmentDisplay(222); // test value
       break;
     case TempDisplay: 
       SetSevenSegmentDisplay(100);
@@ -109,9 +109,8 @@ void AssignSeg()
   // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
   idx = (log(ssdReg) / log(2)); // Get the log base 2
   
-//  ssdReg = ~ssdReg; // revert
   // shifting the bits left
-  if(ssdReg == 0x08)ssdReg = 0x01;
+  if(ssdReg == 0x04)ssdReg = 0x01;
   else ssdReg = ssdReg << 1;
 }
 

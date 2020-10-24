@@ -9,13 +9,13 @@ void setup()
 // This is the MAIN thread
 void loop()
 {
-//	Display(); 
-  digitalWrite(pinD1, HIGH);
-  digitalWrite(pinA, LOW);
-  digitalWrite(pinB, LOW);
-  digitalWrite(pinC, LOW);
-//  digitalWrite(pinD, HIGH);
-  digitalWrite(pinE, LOW);  
-  digitalWrite(pinF, LOW);  
-  digitalWrite(pinF, LOW);  
+	Display(); 
+//  digitalWrite(pinD1, HIGH);
+//  digitalWrite(pinA, LOW);
+//  digitalWrite(pinB, LOW);
+//  digitalWrite(pinC, LOW);
+////  digitalWrite(pinD, HIGH);
+//  digitalWrite(pinE, LOW);  
+//  digitalWrite(pinF, LOW);  
+//  digitalWrite(pinF, LOW);  
 }
