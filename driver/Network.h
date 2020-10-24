@@ -1,26 +1,25 @@
-// TODO Thomas' code
-
+#include "mod.h"
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h> 
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
  
 /* Set these to your desired credentials. */
-const char *ssid = "Swan";  //ENTER YOUR WIFI SETTINGS
-const char *password = "guitar1799dinner";
+const char *ssid = "Elements-5G";  //ENTER YOUR WIFI SETTINGS
+const char *password = "Artemis2076";
  
 //Link to read data from https://jsonplaceholder.typicode.com/comments?postId=7
 //Web/Server address to read/write from 
-const char *host = "www.iplocation.net/";
-const int httpsPort = 443;  //HTTPS= 443 and HTTP = 80
+const char *host = "http://jsonplaceholder.typicode.com/users/1%22";
+//const char *host = "www.iplocation.net/";
+const int httpsPort = 80;  //HTTPS= 443 and HTTP = 80
  
 //SHA1 finger print of certificate use web browser to view and copy
-const char fingerprint[] PROGMEM = "63c0ddf0ebfe03558ebae5c718e18d18be65460a";
-//=======================================================================
-//                    Power on setup
-//=======================================================================
+//const char fingerprint[] PROGMEM = "63c0ddf0ebfe03558ebae5c718e18d18be65460a";
+//const char fingerprint[] PROGMEM = "f6233eac7a1d036315e24f57b610232e2253514e";
+//const char fingerprint[] PROGMEM = ""; // Default
  
-void setup() {
+void init_Network() {
   delay(1000);
   Serial.begin(230400);
   WiFi.mode(WIFI_OFF);        //Prevents reconnection issue (taking too long to connect)
@@ -45,16 +44,14 @@ void setup() {
   Serial.println(WiFi.localIP());  //IP address assigned to your ESP
 }
  
-//=======================================================================
-//                    Main Program Loop
-//=======================================================================
-void loop() {
+void Network() {
   WiFiClientSecure httpsClient;    //Declare object of class WiFiClient
  
   Serial.println(host);
- 
+
   Serial.printf("Using fingerprint '%s'\n", fingerprint);
   httpsClient.setFingerprint(fingerprint);
+  
   httpsClient.setTimeout(15000); // 15 Seconds
   delay(1000);
   

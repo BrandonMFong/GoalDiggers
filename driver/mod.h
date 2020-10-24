@@ -76,3 +76,7 @@ volatile bool IsSnoozed = false;
 volatile bool CriticalAQI = false; // for LED
 volatile bool CriticalTempF = false; // for LED
 /* IMPORTANT VARIALBLES END */
+
+/******************* NETWORKS MOD *****************/
+void init_Network();
+void Network();

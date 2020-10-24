@@ -3,6 +3,9 @@
 int counter = 0;
 
 
+//=======================================================================
+//                    Power on setup
+//=======================================================================
 void setup()
 {
 //  Serial.begin(115200); // turn on when you are debugging for buzzer
@@ -17,16 +20,19 @@ void setup()
   TempF = 50;
 
   /* NETWORK */
-  
+  init_Network();
 }
 
-// This is the MAIN thread
+
+//=======================================================================
+//                    Main Program Loop
+//=======================================================================
 void loop()
 {
   // Network method, TODO Thomas
 
 
-  
+    Network(); // Get location & AQI/Temp
 //  TestValues(); // Compares AQI/Temp to threshold
 //  ReadAxis(); // Reads joystick
 //	Display(); // Displays AQI/Temp to SSD
