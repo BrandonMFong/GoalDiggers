@@ -5,19 +5,19 @@
 #include <ESP8266HTTPClient.h>
  
 /* Set these to your desired credentials. */
-const char *ssid = "Elements-5G";  //ENTER YOUR WIFI SETTINGS
-const char *password = "Artemis2076";
+const char *ssid = "Elements";  //ENTER YOUR WIFI SETTINGS
+const char *password = "";
  
 //Link to read data from https://jsonplaceholder.typicode.com/comments?postId=7
 //Web/Server address to read/write from 
-const char *host = "http://jsonplaceholder.typicode.com/users/1%22";
+const char *host = "https://brandonmfong.com/views/AQITest.html";
 //const char *host = "www.iplocation.net/";
-const int httpsPort = 80;  //HTTPS= 443 and HTTP = 80
+const int httpsPort = 443;  //HTTPS= 443 and HTTP = 80
  
 //SHA1 finger print of certificate use web browser to view and copy
 //const char fingerprint[] PROGMEM = "63c0ddf0ebfe03558ebae5c718e18d18be65460a";
 //const char fingerprint[] PROGMEM = "f6233eac7a1d036315e24f57b610232e2253514e";
-//const char fingerprint[] PROGMEM = ""; // Default
+const char fingerprint[] PROGMEM = "e4da85f654a2d9cc62e16b0d4dd940027aeb8640"; // Brandon
  
 void init_Network() {
   delay(1000);
