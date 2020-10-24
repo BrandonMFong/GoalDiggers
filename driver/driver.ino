@@ -1,15 +1,13 @@
-#include "Display.h"
+#include "Display.h" // Seven segment display 
  
 void setup()
 {
-	// Sets all pins
 	init_7SegmentDisplay();
+ 
 }
 
-
-// all one thread
 // This is the MAIN thread
 void loop()
 {
-	Display(); // Display
+	Display(); 
 }
