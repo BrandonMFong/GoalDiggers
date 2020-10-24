@@ -7,7 +7,9 @@ void init_7SegmentDisplay();
 void SetSevenSegmentDisplay(int value);
 void Display();
 void AssignSeg(uint8_t val);
+void AssignVal(uint8_t val);
 void GetOutputValue(uint8_t val);
+int [] ExtractSegmentValues(uint8_t val);
 
 /* IMPORTANT VARIALBLES START */
 int test_AQI = 0; // temp
@@ -66,7 +68,7 @@ void SetSevenSegmentDisplay(int value)
 {
   AssignSeg(ssdReg); // turn the segment on 
 
-  
+  AssignVal(value);
 }
 
 // do I need to invert the bits? 
@@ -94,4 +96,20 @@ void AssignSeg(uint8_t val)
 uint8_t GetOutputValue(uint8_t val)
 {
   return (val == 0) ? LOW : HIGH;
+}
+
+int SegmentValArr [4] = {0,0,0,0};
+// say a number is 4 digits long, like WXYZ 
+// WXYZ % 10 => Z
+// WXYZ * 0.1 => WXY.Z
+// int(WXY.Z) => WXY
+// then repeat
+void AssignVal(uint8_t val)
+{
+  // modulo 10
+  
+}
+int [] ExtractSegmentValues(uint8_t val)
+{
+  
 }
