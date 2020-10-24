@@ -1,6 +1,7 @@
 
-
+using namespace std;
 //https://lastminuteengineers.com/esp8266-nodemcu-arduino-tutorial/
+//https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html
 // Define prototypes 
 void init_7SegmentDisplay();  
 void SetSevenSegmentDisplay(int value);
@@ -30,9 +31,9 @@ int pinD4 = 4;  // GPIO4
 // LED segment control
 int pinA = 14;  // GPIO14
 int pinB = 0;   // GPIO0
-int pinC = 8;   // GPIO8
-int pinD = 7;   // GPIO7
-int pinE = 6;   // GPIO6
+int pinC = 13;   // GPIO13
+int pinD = 1;   // GPIO3
+int pinE = 12;   // GPIO12
 int pinF = 2;   // GPIO2
 int pinG = 9;   // GPIO9
 
@@ -49,13 +50,13 @@ void init_7SegmentDisplay()
   pinMode(pinD2, OUTPUT);
   pinMode(pinD3, OUTPUT);
   pinMode(pinD4, OUTPUT);
-  pinMode(pinA, OUTPUT);
-  pinMode(pinB, OUTPUT);
-  pinMode(pinC, OUTPUT);
+  pinMode(pinA, OUTPUT); // good
+  pinMode(pinB, OUTPUT); // good
+  pinMode(pinC, OUTPUT); // good
   pinMode(pinD, OUTPUT);
-  pinMode(pinE, OUTPUT);
-  pinMode(pinF, OUTPUT);
-  pinMode(pinG, OUTPUT);
+  pinMode(pinE, OUTPUT); // good
+  pinMode(pinF, OUTPUT); // good
+  pinMode(pinG, OUTPUT); // good
   
   ssdReg = 0x01; // init the value of the state 
   CurrentState = 0x00;
@@ -93,18 +94,14 @@ void AssignSeg()
   // only one of these segments should be on 
   // shift the bits to index 0 and AND it to get the value for the pin
   // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
-//  uint8_t forD1 = (ssdReg >> 3) & 0x01;
-//  digitalWrite(pinD1, GetOutputValue(forD1));   // D1
-//  uint8_t forD2 = (ssdReg >> 2) & 0x01;
-//  digitalWrite(pinD2, GetOutputValue(forD2));   // D2
-//  uint8_t forD3 = (ssdReg >> 1) & 0x01;
-//  digitalWrite(pinD3, GetOutputValue(forD3));   // D3
-//  uint8_t forD4 = (ssdReg >> 0) & 0x01;
-//  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
-
-  // FOR TESTING
-  digitalWrite(pinD1, OUTPUT);   // D1
-  
+  uint8_t forD1 = (ssdReg >> 3) & 0x01;
+  digitalWrite(pinD1, GetOutputValue(forD1));   // D1
+  uint8_t forD2 = (ssdReg >> 2) & 0x01;
+  digitalWrite(pinD2, GetOutputValue(forD2));   // D2
+  uint8_t forD3 = (ssdReg >> 1) & 0x01;
+  digitalWrite(pinD3, GetOutputValue(forD3));   // D3
+  uint8_t forD4 = (ssdReg >> 0) & 0x01;
+  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
 
   // since the segment register only contains one bit (assuming the register isn't complimented 
   // i can use the position of that bit to determine with segment should be on 
@@ -114,8 +111,8 @@ void AssignSeg()
   
 //  ssdReg = ~ssdReg; // revert
   // shifting the bits left
-//  if(ssdReg == 0x08)ssdReg = 0x01;
-//  else ssdReg = ssdReg << 1;
+  if(ssdReg == 0x08)ssdReg = 0x01;
+  else ssdReg = ssdReg << 1;
 }
 
 // translates value to the arduino board digital values
@@ -174,16 +171,16 @@ void ExtractSegmentValues(int val,int index_inner, int MAX)
 // so 1'b xABC DEFG
 uint8_t SSDValue [10] = 
 {
-  0x7E, // 0111 1110 = 0 
-  0x60, // 0110 0000 = 1
-  0x6D, // 0110 1101 = 2
-  0x79, // 0111 1001 = 3
-  0x33, // 0011 0011 = 4
-  0x5B, // 0101 1011 = 5
-  0x5F, // 0101 1111 = 6 
-  0x70, // 0111 0000 = 7
-  0x7F, // 0111 1111 = 8
-  0x73 // 0111 0011 = 9 
+  ~0x7E, // 0111 1110 = 0 
+  ~0x60, // 0110 0000 = 1
+  ~0x6D, // 0110 1101 = 2
+  ~0x79, // 0111 1001 = 3
+  ~0x33, // 0011 0011 = 4
+  ~0x5B, // 0101 1011 = 5
+  ~0x5F, // 0101 1111 = 6 
+  ~0x70, // 0111 0000 = 7
+  ~0x7F, // 0111 1111 = 8
+  ~0x73 // 0111 0011 = 9 
 };
 // assuming the val is less then 10
 // that means its in between 0 .. 9

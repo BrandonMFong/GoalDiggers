@@ -93,21 +93,14 @@ void AssignSeg()
       // only one of these segments should be on 
       // shift the bits to index 0 and AND it to get the value for the pin
       // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
-    //  uint8_t forD1 = (ssdReg >> 3) & 0x01;
-    //  digitalWrite(pinD1, GetOutputValue(forD1));   // D1
-    //  uint8_t forD2 = (ssdReg >> 2) & 0x01;
-    //  digitalWrite(pinD2, GetOutputValue(forD2));   // D2
-    //  uint8_t forD3 = (ssdReg >> 1) & 0x01;
-    //  digitalWrite(pinD3, GetOutputValue(forD3));   // D3
-    //  uint8_t forD4 = (ssdReg >> 0) & 0x01;
-    //  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
-
-      // FOR TESTING
-    digitalWrite(pinD1, HIGH);   // D1
-    digitalWrite(pinD2, LOW);   // D1
-    digitalWrite(pinD3, LOW);   // D1
-    digitalWrite(pinD4, LOW);   // D1
-
+    uint8_t forD1 = (ssdReg >> 3) & 0x01;
+    digitalWrite(pinD1, GetOutputValue(forD1));   // D1
+    uint8_t forD2 = (ssdReg >> 2) & 0x01;
+    digitalWrite(pinD2, GetOutputValue(forD2));   // D2
+    uint8_t forD3 = (ssdReg >> 1) & 0x01;
+    digitalWrite(pinD3, GetOutputValue(forD3));   // D3
+    uint8_t forD4 = (ssdReg >> 0) & 0x01;
+    digitalWrite(pinD4, GetOutputValue(forD4));   // D4
 
     // since the segment register only contains one bit (assuming the register isn't complimented 
     // i can use the position of that bit to determine with segment should be on 
@@ -117,8 +110,8 @@ void AssignSeg()
 
   //  ssdReg = ~ssdReg; // revert
     // shifting the bits left
-  //  if(ssdReg == 0x08)ssdReg = 0x01;
-  //  else ssdReg = ssdReg << 1;
+    if (ssdReg == 0x08)ssdReg = 0x01;
+    else ssdReg = ssdReg << 1;
 }
 
 // translates value to the arduino board digital values
