@@ -14,21 +14,23 @@ int test_AQI = 0; // temp
 int CurrentState = 0;
 const uint8_t AQIDisplay = 0;
 const uint8_t TempDisplay = 1;
+
+// Segment control 
 int pinD1 = 10; // GPIO10
 int pinD2 = 16; // GPIO16
-int pinD3 = 5; // GPIO5
-int pinD4 = 4; // GPIO4
+int pinD3 = 5;  // GPIO5
+int pinD4 = 4;  // GPIO4
+
+// LED segment control
+int pinA = 14;  // GPIO14
+int pinB = 0;   // GPIO0
+int pinC = 8;   // GPIO8
+int pinD = 7;   // GPIO7
+int pinE = 6;   // GPIO6
+int pinF = 2;   // GPIO2
 
 volatile uint8_t ssdReg;
 
-// From left to right
-// SSD3, SSD2, SSD1, SSD0
-//const uint8_t ssd0 = 0x00;
-//const uint8_t ssd1 = 0x01;
-//const uint8_t ssd2 = 0x02;
-//const uint8_t ssd3 = 0x03;
-
-  
 /* IMPORTANT VARIALBLES END */
 
 // INIT
@@ -39,8 +41,14 @@ void init_7SegmentDisplay()
   pinMode(pinD2, OUTPUT);
   pinMode(pinD3, OUTPUT);
   pinMode(pinD4, OUTPUT);
+  pinMode(pinA, OUTPUT);
+  pinMode(pinB, OUTPUT);
+  pinMode(pinC, OUTPUT);
+  pinMode(pinD, OUTPUT);
+  pinMode(pinE, OUTPUT);
+  pinMode(pinF, OUTPUT);
   
-  SSDState = 0x00; // init the value of the state 
+  ssdReg = 0x00; // init the value of the state 
 }
 
 // DISPLAY
@@ -56,14 +64,20 @@ void Display()
 // SEVEN SEG LOGIC
 void SetSevenSegmentDisplay(int value)
 {
-  // shifting the bits left
-  if(ssdReg == 0x08)ssdReg = 0x01;
-  else ssdReg = ssdReg << 1;
+  AssignSeg(ssdReg); // turn the segment on 
+
+  
 }
 
 // do I need to invert the bits? 
+// this assigns one of the 4 segments
 void AssignSeg(uint8_t val)
 {
+  // shifting the bits left
+  if(ssdReg == 0x08)ssdReg = 0x01;
+  else ssdReg = ssdReg << 1;
+  
+  // only one of these segments should be on 
   // shift the bits to index 0 and AND it to get the value for the pin
   // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
   uint8_t var0 = (val >> 0) & 0x01;
