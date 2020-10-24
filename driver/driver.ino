@@ -15,15 +15,21 @@ void setup()
   // Test values
   AQI = 310; // put a value above AQIThreshold to init ON for buzzer
   TempF = 50;
+
+  /* NETWORK */
+  
 }
 
 // This is the MAIN thread
 void loop()
 {
   // Network method, TODO Thomas
-  TestValues(); // Compares AQI/Temp to threshold
-  ReadAxis(); // Reads joystick
-	Display(); // Displays AQI/Temp to SSD
+
+
+  
+//  TestValues(); // Compares AQI/Temp to threshold
+//  ReadAxis(); // Reads joystick
+//	Display(); // Displays AQI/Temp to SSD
 
   // Keep so we can use this to debug Buzzer
 //  Serial.println(BuzzerState);
