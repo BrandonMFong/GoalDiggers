@@ -20,7 +20,7 @@ void setup()
   TempF = 50;
 
   /* NETWORK */
-  init_Network();
+//  init_Network();
 }
 
 
@@ -32,10 +32,10 @@ void loop()
   // Network method, TODO Thomas
 
 
-    Network(); // Get location & AQI/Temp
-//  TestValues(); // Compares AQI/Temp to threshold
-//  ReadAxis(); // Reads joystick
-//	Display(); // Displays AQI/Temp to SSD
+//    Network(); // Get location & AQI/Temp
+  TestValues(); // Compares AQI/Temp to threshold
+  ReadAxis(); // Reads joystick
+	Display(); // Displays AQI/Temp to SSD
 
   // Keep so we can use this to debug Buzzer
 //  Serial.println(BuzzerState);
