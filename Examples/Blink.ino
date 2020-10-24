@@ -8,7 +8,7 @@
 
   Note that this sketch uses LED_BUILTIN to find the pin with the internal LED
 */
-int ledPin = 12; // GPIO13
+int ledPin = 12; // 
 
 void setup() 
 {
