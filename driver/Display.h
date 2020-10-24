@@ -68,13 +68,13 @@ void Display()
   switch(CurrentState)
   {
     case AQIDisplay: 
-      SetSevenSegmentDisplay(45); // test value
+      SetSevenSegmentDisplay(AQI); // test value
       break;
     case TempDisplay: 
       SetSevenSegmentDisplay(100);
       break;
   }
-  delay(5);
+  delay(5); // multiplexing the 3 segments by 5ms intervals
 }
 
 // SEVEN SEG LOGIC
@@ -100,7 +100,7 @@ void AssignSeg()
   digitalWrite(pinD2, GetOutputValue(forD2));   // D2
   uint8_t forD3 = (ssdReg >> 2) & 0x01;
   digitalWrite(pinD3, GetOutputValue(forD3));   // D3
-  uint8_t forD4 = (ssdReg >> 0) & 0x01;
+//  uint8_t forD4 = (ssdReg >> 0) & 0x01;
 //  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
 
   // since the segment register only contains one bit (assuming the register isn't complimented 
@@ -171,7 +171,7 @@ void ExtractSegmentValues(int val,int index_inner, int MAX)
 uint8_t SSDValue [10] = 
 {
   ~0x7E, // 0111 1110 = 0 
-  ~0x60, // 0110 0000 = 1
+  ~0x30, // 0011 0000 = 1
   ~0x6D, // 0110 1101 = 2
   ~0x79, // 0111 1001 = 3
   ~0x33, // 0011 0011 = 4
