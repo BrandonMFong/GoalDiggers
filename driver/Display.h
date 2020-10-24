@@ -37,6 +37,7 @@ int pinF = 2;   // GPIO2
 int pinG = 9;   // GPIO9
 
 volatile uint8_t ssdReg; // IMPORTANT
+volatile uint8_t index; // IMPORTANT
 
 /* IMPORTANT VARIALBLES END */
 
@@ -83,9 +84,6 @@ void SetSevenSegmentDisplay(int value)
 // <D1><D2><D3><D4>
 void AssignSeg()
 {
-  // shifting the bits left
-  if(ssdReg == 0x08)ssdReg = 0x01;
-  else ssdReg = ssdReg << 1;
 //  ssdReg = ~ssdReg; // flip
   
   // only one of these segments should be on 
@@ -100,7 +98,17 @@ void AssignSeg()
   uint8_t forD4 = (ssdReg >> 0) & 0x01;
   digitalWrite(pinD4, GetOutputValue(forD4));   // D4
   
+
+  // since the segment register only contains one bit (assuming the register isn't complimented 
+  // i can use the position of that bit to determine with segment should be on 
+  // 1000 = 8, log2(8) = 3 
+  // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
+  index = 3 - (log(ssdReg) / log(2)); // Get the log base 2
+  
 //  ssdReg = ~ssdReg; // revert
+  // shifting the bits left
+  if(ssdReg == 0x08)ssdReg = 0x01;
+  else ssdReg = ssdReg << 1;
 }
 
 // translates value to the arduino board digital values
@@ -126,12 +134,6 @@ void AssignVal(uint8_t val)
   }
   
   ExtractSegmentValues(val,0,GetNumberOfDigits(int(val))); // separates WXYZ into {Z,Y,X,W}
-
-  // since the segment register only contains one bit (assuming the register isn't complimented 
-  // i can use the position of that bit to determine with segment should be on 
-  // 1000 = 8, log2(8) = 3 
-  // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
-  int index = log(ssdReg)/log(2); // Get the log base 2
 
   // Set value 
   SetSegmentValue(SegmentValArr[index]);
