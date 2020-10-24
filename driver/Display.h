@@ -11,6 +11,7 @@ void AssignVal(uint8_t val);
 void GetOutputValue(uint8_t val);
 void ExtractSegmentValues(int val,int index);
 void SetSegmentValue(int val);
+void SSDTranslation(uint8_t val);
 
 /* IMPORTANT VARIALBLES START */
 volatile int AQI;
@@ -132,8 +133,27 @@ void ExtractSegmentValues(int val,int index)
   if(index < 3) ExtractSegmentValues(int(val*0.1),index+1); // recurse into function if we still have some of the number left 
 }
 
+// let 1'b xxxx xxxx 
+// map them to pin variables 
+// so 1'b xxAB CDEF
+uint8_t SSDValue [10] = 
+{
+  
+};
+// assuming the val is less then 10
+void SetSegmentValue(int val) 
+{
+  if(val < 10)
+  {
+    
+  }
+  else 
+  {
+    // default setting 
+  }
+}
 
-void SetSegmentValue(int val)
+void SSDTranslation(uint8_t val)
 {
   
 }
