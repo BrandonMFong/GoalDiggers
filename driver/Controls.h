@@ -24,7 +24,9 @@ void init_Controls() {
 
   // attach interrupt
   attachInterrupt(digitalPinToInterrupt(joyButtonPin), turnOffBuzzer, FALLING); 
-  
+
+  // init buzzer output pin 
+//  debug output at boot, boot fails if pulled LOW
 }
 
 
@@ -52,19 +54,21 @@ void TestValues()
   if(AQI >= AQIThreshold && !IsSnoozed) BuzzerState = ON; // testing buzzer
   if(TempF >= TempFThreshold && !IsSnoozed) BuzzerState = ON; // testing 
 
-  SetBuzzer();
+//  Buzzer();
 }
 
-int BuzzCounter = 0;
-void Buzzer()
-{
-  if(BuzzerState)
-  {
-    // turn on buzzer, write to it
-  }
-  else
-  {
-    // turn it off, write digital 0 to S pin 
-  }
-}
+//int BuzzCounter = 0;
+//void Buzzer()
+//{
+//  if(BuzzerState)
+//  {
+//    // turn on buzzer, write to it
+//    digitalWrite(buzzerPin, HIGH); 
+//  }
+//  else
+//  {
+//    // turn it off, write digital 0 to S pin 
+//    digitalWrite(buzzerPin, LOW); 
+//  }
+//}
 /* FUNCTIONS END */

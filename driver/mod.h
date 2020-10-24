@@ -69,4 +69,5 @@ volatile uint8_t BuzzerState = OFF; // BUZZER STATE
 volatile bool IsSnoozed = false;
 volatile bool CriticalAQI = false; // for LED
 volatile bool CriticalTempF = false; // for LED
+const int buzzerPin = 1; // GPIO1
 /* IMPORTANT VARIALBLES END */

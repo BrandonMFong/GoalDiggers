@@ -15,6 +15,10 @@ void setup()
   // Test values
   AQI = 837;
   TempF = 80;
+//https://electronics.stackexchange.com/questions/30238/how-to-invert-a-digital-signal/117087
+//  pinMode(1, FUNCTION_3); // enable rx to be gpio
+//  pinMode(1, OUTPUT);
+//  digitalWrite(1,LOW); // FAILS if low
 }
 
 // This is the MAIN thread
@@ -26,5 +30,7 @@ void loop()
 	Display(); 
 
   // Keep so we can use this to debug Buzzer
-  Serial.println(BuzzerState);
+//  int state = digitalRead(1);
+//  Serial.println(state);
+//  Serial.println(BuzzerState);
 }
