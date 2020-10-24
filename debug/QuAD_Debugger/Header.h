@@ -8,7 +8,7 @@ void Display();
 void AssignSeg();
 void AssignVal(uint8_t val);
 int GetOutputValue(uint8_t val);
-void ExtractSegmentValues(int val, int index, int MAX);
+void ExtractSegmentValues(int val, int index_inner, int MAX);
 void SetSegmentValue(int val);
 void SSDTranslation(uint8_t val);
 int GetNumberOfDigits(int num);
@@ -37,7 +37,7 @@ int pinF = 2;   // GPIO2
 int pinG = 9;   // GPIO9
 
 volatile uint8_t ssdReg; // IMPORTANT
-volatile uint8_t index; // IMPORTANT
+volatile int idx; // IMPORTANT
 
 /* IMPORTANT VARIALBLES END */
 
@@ -66,8 +66,12 @@ void Display()
 {
     switch (CurrentState)
     {
-    case AQIDisplay: SetSevenSegmentDisplay(100); // test value
-    case TempDisplay: SetSevenSegmentDisplay(100);
+    case AQIDisplay:
+        SetSevenSegmentDisplay(100); // test value
+        break;
+    case TempDisplay:
+        SetSevenSegmentDisplay(100);
+        break;
     }
 }
 
@@ -103,7 +107,7 @@ void AssignSeg()
     // i can use the position of that bit to determine with segment should be on 
     // 1000 = 8, log2(8) = 3 
     // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
-    index = 3 - (log(ssdReg) / log(2)); // Get the log base 2
+    idx = 3 - (log(ssdReg) / log(2)); // Get the log base 2
 
   //  ssdReg = ~ssdReg; // revert
     // shifting the bits left
@@ -136,7 +140,7 @@ void AssignVal(uint8_t val)
     ExtractSegmentValues(val, 0, GetNumberOfDigits(int(val))); // separates WXYZ into {Z,Y,X,W}
 
     // Set value 
-    SetSegmentValue(SegmentValArr[index]);
+    SetSegmentValue(SegmentValArr[idx]);
 }
 
 int GetNumberOfDigits(int num)
@@ -153,13 +157,13 @@ int GetNumberOfDigits(int num)
 // assume val is int
 // result should be in SegmentValArr array 
 // recurses based on the MAX number of digits
-void ExtractSegmentValues(int val, int index, int MAX)
+void ExtractSegmentValues(int val, int index_inner, int MAX)
 {
     int temp = val % 10;
-    SegmentValArr[index] = temp;
+    SegmentValArr[index_inner] = temp;
 
     // int(val*0.1) shifts the number to the right
-    if (index < MAX) ExtractSegmentValues(int(val * 0.1), index + 1, MAX); // recurse into function if we still have some of the number left 
+    if (index_inner < MAX) ExtractSegmentValues(int(val * 0.1), index_inner + 1, MAX); // recurse into function if we still have some of the number left 
 }
 
 // let 1'b xxxx xxxx 
@@ -212,6 +216,3 @@ void SSDTranslation(uint8_t val)
     uint8_t forA = (val >> 6) & 0x01;
     digitalWrite(pinA, GetOutputValue(forA));   // G
 }
-
-
-
