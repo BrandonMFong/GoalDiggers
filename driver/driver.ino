@@ -1,23 +1,30 @@
 #include "Display.h" // Seven segment display 
 
 int counter = 0;
+
+
 void setup()
 {
-	init_7SegmentDisplay();
-  AQI = 0;
+  Serial.begin(115200); // turn on when you are debugging for buzzer
+  /* SEVEN SEGMENT */
+	init_Display();
+
+  /* BUZZER, JOY STICK, LED (control signals) */
+  init_Controls();
+
+  // Test values
+  AQI = 837;
+  TempF = 80;
 }
 
 // This is the MAIN thread
 void loop()
 {
-  if(counter == 100)
-  {
-    counter = 0;
-    if(AQI > 900) AQI = 0; 
-    else AQI++;
-  }
-  else counter++;
+  if(AQI > 300 && !IsSnoozed) BuzzerState = ON; // testing buzzer
   
+  ReadAxis(); // Reads joystick
 	Display(); 
-  // can I save volatile variables to the eeprom?
+
+  // Keep so we can use this to debug Buzzer
+  Serial.println(BuzzerState);
 }

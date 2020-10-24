@@ -1,49 +1,10 @@
+#include "Controls.h"
 
-using namespace std;
 //https://lastminuteengineers.com/esp8266-nodemcu-arduino-tutorial/
 //https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html
-// Define prototypes 
-void init_7SegmentDisplay();  
-void SetSevenSegmentDisplay(int value);
-void Display();
-void AssignSeg();
-void AssignVal(int val);
-int GetOutputValue(uint8_t val);
-void ExtractSegmentValues(int val,int index_inner, int MAX);
-void SetSegmentValue(int val);
-void SSDTranslation(uint8_t val);
-int GetNumberOfDigits(int num);
-
-/* IMPORTANT VARIALBLES START */
-volatile int AQI;
-volatile double TempF; // Fahrenheit
-
-const uint8_t AQIDisplay = 0x00;
-const uint8_t TempDisplay = 0x01;
-volatile int CurrentState; // test value
-
-// Segment control 
-int pinD1 = 10; // GPIO10
-int pinD2 = 16; // GPIO16
-int pinD3 = 5;  // GPIO5
-//int pinD4 = 4;  // GPIO4
-
-// LED segment control
-int pinA = 14;  // GPIO14
-int pinB = 0;   // GPIO0
-int pinC = 13;   // GPIO13
-int pinD = 4;   // GPIO4
-int pinE = 12;   // GPIO12
-int pinF = 2;   // GPIO2
-int pinG = 15;   // GPIO15
-
-volatile uint8_t ssdReg; // IMPORTANT
-volatile int idx; // IMPORTANT
-
-/* IMPORTANT VARIALBLES END */
-
+/* FUNCTIONS START */
 // INIT
-void init_7SegmentDisplay()
+void init_Display()
 {
   // init segment output pin 
   pinMode(pinD1, OUTPUT);
@@ -65,16 +26,16 @@ void init_7SegmentDisplay()
 // DISPLAY
 void Display()
 {
-  switch(CurrentState)
+  switch(CurrentState) // driven by Controls.h
   {
     case AQIDisplay: 
       SetSevenSegmentDisplay(AQI); // test value
       break;
     case TempDisplay: 
-      SetSevenSegmentDisplay(100);
+      SetSevenSegmentDisplay(TempF);
       break;
   }
-  delay(5); // multiplexing the 3 segments by 5ms intervals
+  delay(10); // multiplexing the 3 segments by 5ms intervals
 }
 
 // SEVEN SEG LOGIC
@@ -215,3 +176,4 @@ void SSDTranslation(uint8_t val)
   uint8_t forA = (val >> 6) & 0x01;
   digitalWrite(pinA, GetOutputValue(forA));   // G
 }
+/* FUNCTIONS END */
