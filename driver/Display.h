@@ -151,20 +151,36 @@ uint8_t SSDValue [10] =
   0x73 // 0111 0011 = 9 
 };
 // assuming the val is less then 10
+// that means its in between 0 .. 9
+// we can use this to index the array 
 void SetSegmentValue(int val) 
 {
   if(val < 10)
   {
-    
+    SSDTranslation(SSDValue[val]);
   }
   else 
   {
     // default setting 
+    SSDTranslation(SSDValue[0]); // output zero
   }
 }
 
+// actual translation being written 
 void SSDTranslation(uint8_t val)
 {
   uint8_t forG = (val >> 0) & 0x01;
-  digitalWrite(pinD1, GetOutputValue(var0));   // D1
+  digitalWrite(pinG, GetOutputValue(forG));   // G
+  uint8_t forF = (val >> 0) & 0x01;
+  digitalWrite(pinF, GetOutputValue(forF));   // G
+  uint8_t forE = (val >> 0) & 0x01;
+  digitalWrite(pinE, GetOutputValue(forE));   // G
+  uint8_t forD = (val >> 0) & 0x01;
+  digitalWrite(pinD, GetOutputValue(forD));   // G
+  uint8_t forC = (val >> 0) & 0x01;
+  digitalWrite(pinC, GetOutputValue(forC));   // G
+  uint8_t forB = (val >> 0) & 0x01;
+  digitalWrite(pinB, GetOutputValue(forB));   // G
+  uint8_t forA = (val >> 0) & 0x01;
+  digitalWrite(pinA, GetOutputValue(forA));   // G
 }
