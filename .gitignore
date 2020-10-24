@@ -1,2 +1,7 @@
 debug.log
 *.code-workspace
+debug/QuAD_Debugger/.vs/*
+debug/QuAD_Debugger/Debug/*
+debug/QuAD_Debugger/*.vcxproj
+debug/QuAD_Debugger/*.filters
+debug/QuAD_Debugger/*.user

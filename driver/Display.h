@@ -1,14 +1,13 @@
 
 
 //https://lastminuteengineers.com/esp8266-nodemcu-arduino-tutorial/
-
 // Define prototypes 
 void init_7SegmentDisplay();  
 void SetSevenSegmentDisplay(int value);
 void Display();
 void AssignSeg();
 void AssignVal(uint8_t val);
-void GetOutputValue(uint8_t val);
+int GetOutputValue(uint8_t val);
 void ExtractSegmentValues(int val,int index, int MAX);
 void SetSegmentValue(int val);
 void SSDTranslation(uint8_t val);
@@ -18,9 +17,9 @@ int GetNumberOfDigits(int num);
 volatile int AQI;
 volatile double TempF; // Fahrenheit
 
-const uint8_t AQIDisplay = 0;
-const uint8_t TempDisplay = 1;
-volatile int CurrentState = AQIDisplay; // test value
+const uint8_t AQIDisplay = 0x00;
+const uint8_t TempDisplay = 0x01;
+volatile int CurrentState; // test value
 
 // Segment control 
 int pinD1 = 10; // GPIO10
@@ -57,7 +56,8 @@ void init_7SegmentDisplay()
   pinMode(pinF, OUTPUT);
   pinMode(pinG, OUTPUT);
   
-  ssdReg = 0x00; // init the value of the state 
+  ssdReg = 0x01; // init the value of the state 
+  CurrentState = 0x00;
 }
 
 // DISPLAY
@@ -84,6 +84,7 @@ void AssignSeg()
   // shifting the bits left
   if(ssdReg == 0x08)ssdReg = 0x01;
   else ssdReg = ssdReg << 1;
+//  ssdReg = ~ssdReg; // flip
   
   // only one of these segments should be on 
   // shift the bits to index 0 and AND it to get the value for the pin
@@ -96,24 +97,32 @@ void AssignSeg()
   digitalWrite(pinD3, GetOutputValue(forD3));   // D3
   uint8_t forD4 = (ssdReg >> 3) & 0x01;
   digitalWrite(pinD4, GetOutputValue(forD4));   // D4
+  
+//  ssdReg = ~ssdReg; // revert
 }
 
 // translates value to the arduino board digital values
-uint8_t GetOutputValue(uint8_t val)
+int GetOutputValue(uint8_t val)
 {
   return (val == 0) ? LOW : HIGH;
 }
 
 int SegmentValArr [4] = {0,0,0,0}; // array 
 // say a number is 4 digits long, like WXYZ 
+// modulo 10
 // WXYZ % 10 => Z
 // WXYZ * 0.1 => WXY.Z
 // int(WXY.Z) => WXY
 // then repeat
 void AssignVal(uint8_t val)
 {
-  // modulo 10
-  SegmentValArr = {0,0,0,0}; // reset 
+//  SegmentValArr = {0,0,0,0}; // reset 
+  int ArrSize = sizeof(SegmentValArr)/sizeof(SegmentValArr[0]);
+  for(int i = 0; i < ArrSize; i++)
+  {
+    SegmentValArr[i] = 0;
+  }
+  
   ExtractSegmentValues(val,0,GetNumberOfDigits(int(val))); // separates WXYZ into {Z,Y,X,W}
 
   // since the segment register only contains one bit (assuming the register isn't complimented 
@@ -146,7 +155,7 @@ void ExtractSegmentValues(int val,int index, int MAX)
   SegmentValArr[index] = temp;
 
   // int(val*0.1) shifts the number to the right
-  if(index < MAX) ExtractSegmentValues(int(val*0.1),index+1); // recurse into function if we still have some of the number left 
+  if(index < MAX) ExtractSegmentValues(int(val*0.1),index+1,MAX); // recurse into function if we still have some of the number left 
 }
 
 // let 1'b xxxx xxxx 
@@ -186,16 +195,16 @@ void SSDTranslation(uint8_t val)
 {
   uint8_t forG = (val >> 0) & 0x01;
   digitalWrite(pinG, GetOutputValue(forG));   // G
-  uint8_t forF = (val >> 0) & 0x01;
+  uint8_t forF = (val >> 1) & 0x01;
   digitalWrite(pinF, GetOutputValue(forF));   // G
-  uint8_t forE = (val >> 0) & 0x01;
+  uint8_t forE = (val >> 2) & 0x01;
   digitalWrite(pinE, GetOutputValue(forE));   // G
-  uint8_t forD = (val >> 0) & 0x01;
+  uint8_t forD = (val >> 3) & 0x01;
   digitalWrite(pinD, GetOutputValue(forD));   // G
-  uint8_t forC = (val >> 0) & 0x01;
+  uint8_t forC = (val >> 4) & 0x01;
   digitalWrite(pinC, GetOutputValue(forC));   // G
-  uint8_t forB = (val >> 0) & 0x01;
+  uint8_t forB = (val >> 5) & 0x01;
   digitalWrite(pinB, GetOutputValue(forB));   // G
-  uint8_t forA = (val >> 0) & 0x01;
+  uint8_t forA = (val >> 6) & 0x01;
   digitalWrite(pinA, GetOutputValue(forA));   // G
 }
