@@ -17,7 +17,7 @@ const int httpsPort = 443;  //HTTPS= 443 and HTTP = 80
 //SHA1 finger print of certificate use web browser to view and copy
 //const char fingerprint[] PROGMEM = "63c0ddf0ebfe03558ebae5c718e18d18be65460a";
 //const char fingerprint[] PROGMEM = "f6233eac7a1d036315e24f57b610232e2253514e";
-const char fingerprint[] PROGMEM = "e4da85f654a2d9cc62e16b0d4dd940027aeb8640"; // Brandon
+//const char fingerprint[] PROGMEM = "e4da85f654a2d9cc62e16b0d4dd940027aeb8640"; // Brandon
  
 void init_Network() {
   delay(1000);
@@ -49,15 +49,17 @@ void Network() {
  
   Serial.println(host);
 
-  Serial.printf("Using fingerprint '%s'\n", fingerprint);
-  httpsClient.setFingerprint(fingerprint);
+//  Serial.printf("Using fingerprint '%s'\n", fingerprint);
+//  httpsClient.setFingerprint(fingerprint);
   
   httpsClient.setTimeout(15000); // 15 Seconds
   delay(1000);
   
   Serial.print("HTTPS Connecting");
   int r=0; //retry counter
-  while((!httpsClient.connect(host, httpsPort)) && (r < 30)){
+  httpsClient.setInsecure();
+  while((!httpsClient.connect(host, httpsPort)) && (r < 30))
+  {
       delay(100);
       Serial.print(".");
       r++;
