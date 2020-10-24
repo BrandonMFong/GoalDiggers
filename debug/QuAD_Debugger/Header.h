@@ -103,7 +103,10 @@ void AssignSeg()
     //  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
 
       // FOR TESTING
-    digitalWrite(pinD1, OUTPUT);   // D1
+    digitalWrite(pinD1, HIGH);   // D1
+    digitalWrite(pinD2, LOW);   // D1
+    digitalWrite(pinD3, LOW);   // D1
+    digitalWrite(pinD4, LOW);   // D1
 
 
     // since the segment register only contains one bit (assuming the register isn't complimented 
