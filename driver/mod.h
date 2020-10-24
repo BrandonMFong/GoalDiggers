@@ -1,6 +1,7 @@
 #define OFF 0
 #define ON 1
-
+#define AQIThreshold 300
+#define TempFThreshold 100
 
 /************** DISPLAY MOD ******************/
 /* PROTOTYPES START */
@@ -50,6 +51,7 @@ void init_Buzzer();
 void ReadAxis();
 void button_ISR();
 void TestValues();
+void Buzzer();
 /* PROTOTYPES END */
 
 /* IMPORTANT VARIALBLES START */

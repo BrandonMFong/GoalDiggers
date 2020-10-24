@@ -20,8 +20,8 @@ void setup()
 // This is the MAIN thread
 void loop()
 {
-  if(AQI > 300 && !IsSnoozed) BuzzerState = ON; // testing buzzer
-  
+  // Network method, TODO Thomas
+  TestValues(); // Compares AQI/Temp to threshold
   ReadAxis(); // Reads joystick
 	Display(); 
 

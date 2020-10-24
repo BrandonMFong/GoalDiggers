@@ -47,8 +47,24 @@ void ReadAxis()
 }
 
 // BUZZER LOGIC TODO
-//void TestValues()
-//{
-//  
-//}
+void TestValues()
+{
+  if(AQI >= AQIThreshold && !IsSnoozed) BuzzerState = ON; // testing buzzer
+  if(TempF >= TempFThreshold && !IsSnoozed) BuzzerState = ON; // testing 
+
+  SetBuzzer();
+}
+
+int BuzzCounter = 0;
+void Buzzer()
+{
+  if(BuzzerState)
+  {
+    // turn on buzzer, write to it
+  }
+  else
+  {
+    // turn it off, write digital 0 to S pin 
+  }
+}
 /* FUNCTIONS END */
