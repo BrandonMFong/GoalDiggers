@@ -6,12 +6,13 @@
 void init_7SegmentDisplay();  
 void SetSevenSegmentDisplay(int value);
 void Display();
-void AssignSeg(uint8_t val);
+void AssignSeg();
 void AssignVal(uint8_t val);
 void GetOutputValue(uint8_t val);
-void ExtractSegmentValues(int val,int index);
+void ExtractSegmentValues(int val,int index, int MAX);
 void SetSegmentValue(int val);
 void SSDTranslation(uint8_t val);
+int GetNumberOfDigits(int num);
 
 /* IMPORTANT VARIALBLES START */
 volatile int AQI;
@@ -112,6 +113,7 @@ int SegmentValArr [4] = {0,0,0,0}; // array
 void AssignVal(uint8_t val)
 {
   // modulo 10
+  SegmentValArr = {0,0,0,0}; // reset 
   ExtractSegmentValues(val,0,GetNumberOfDigits(int(val))); // separates WXYZ into {Z,Y,X,W}
 
   // since the segment register only contains one bit (assuming the register isn't complimented 
