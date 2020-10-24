@@ -80,3 +80,4 @@ volatile bool CriticalTempF = false; // for LED
 /******************* NETWORKS MOD *****************/
 void init_Network();
 void Network();
+void handleSpecificArg();
