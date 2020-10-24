@@ -66,14 +66,14 @@ void Display()
 // SEVEN SEG LOGIC
 void SetSevenSegmentDisplay(int value)
 {
-  AssignSeg(ssdReg); // turn the segment on 
+  AssignSeg(); // turn the segment on 
 
   AssignVal(value);
 }
 
 // do I need to invert the bits? 
 // this assigns one of the 4 segments
-void AssignSeg(uint8_t val)
+void AssignSeg()
 {
   // shifting the bits left
   if(ssdReg == 0x08)ssdReg = 0x01;
@@ -82,13 +82,13 @@ void AssignSeg(uint8_t val)
   // only one of these segments should be on 
   // shift the bits to index 0 and AND it to get the value for the pin
   // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
-  uint8_t var0 = (val >> 0) & 0x01;
+  uint8_t var0 = (ssdReg >> 0) & 0x01;
   digitalWrite(pinD1, GetOutputValue(var0));   // D1
-  uint8_t var1 = (val >> 1) & 0x01;
+  uint8_t var1 = (ssdReg >> 1) & 0x01;
   digitalWrite(pinD2, GetOutputValue(var1));   // D2
-  uint8_t var2 = (val >> 2) & 0x01;
+  uint8_t var2 = (ssdReg >> 2) & 0x01;
   digitalWrite(pinD3, GetOutputValue(var2));   // D3
-  uint8_t var3 = (val >> 3) & 0x01;
+  uint8_t var3 = (ssdReg >> 3) & 0x01;
   digitalWrite(pinD4, GetOutputValue(var3));   // D4
 }
 
@@ -104,11 +104,12 @@ int SegmentValArr [4] = {0,0,0,0};
 // WXYZ * 0.1 => WXY.Z
 // int(WXY.Z) => WXY
 // then repeat
-void AssignVal(uint8_t val)
+void AssignVal(uint8_t val, )
 {
   // modulo 10
-  
+  SegmentValArr = ExtractSegmentValues(val);
 }
+
 int [] ExtractSegmentValues(uint8_t val)
 {
   
