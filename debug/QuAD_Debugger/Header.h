@@ -7,7 +7,7 @@ void init_7SegmentDisplay();
 void SetSevenSegmentDisplay(int value);
 void Display();
 void AssignSeg();
-void AssignVal(uint8_t val);
+void AssignVal(int val);
 int GetOutputValue(uint8_t val);
 void ExtractSegmentValues(int val, int index_inner, int MAX);
 void SetSegmentValue(int val);
@@ -24,8 +24,8 @@ volatile int CurrentState; // test value
 
 // Segment control 
 int pinD1 = 10; // GPIO10
-//int pinD2 = 16; // GPIO16
-//int pinD3 = 5;  // GPIO5
+int pinD2 = 16; // GPIO16
+int pinD3 = 5;  // GPIO5
 //int pinD4 = 4;  // GPIO4
 
 // LED segment control
@@ -47,8 +47,8 @@ void init_7SegmentDisplay()
 {
     // init segment output pin 
     pinMode(pinD1, OUTPUT);
-    //  pinMode(pinD2, OUTPUT);
-    //  pinMode(pinD3, OUTPUT);
+    pinMode(pinD2, OUTPUT);
+    pinMode(pinD3, OUTPUT);
     //  pinMode(pinD4, OUTPUT);
     pinMode(pinA, OUTPUT); // good
     pinMode(pinB, OUTPUT); // good
@@ -68,7 +68,7 @@ void Display()
     switch (CurrentState)
     {
     case AQIDisplay:
-        SetSevenSegmentDisplay(2); // test value
+        SetSevenSegmentDisplay(345); // test value
         break;
     case TempDisplay:
         SetSevenSegmentDisplay(100);
@@ -89,17 +89,16 @@ void SetSevenSegmentDisplay(int value)
 // <D4><D3><D2><D1>
 void AssignSeg()
 {
-    //  ssdReg = ~ssdReg; // flip
 
-      // only one of these segments should be on 
-      // shift the bits to index 0 and AND it to get the value for the pin
-      // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
-    uint8_t forD1 = (ssdReg >> 3) & 0x01;
+    // only one of these segments should be on 
+    // shift the bits to index 0 and AND it to get the value for the pin
+    // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
+    uint8_t forD1 = (ssdReg >> 2) & 0x01;
     digitalWrite(pinD1, GetOutputValue(forD1));   // D1
-    uint8_t forD2 = (ssdReg >> 2) & 0x01;
-    //  digitalWrite(pinD2, GetOutputValue(forD2));   // D2
-    uint8_t forD3 = (ssdReg >> 1) & 0x01;
-    //  digitalWrite(pinD3, GetOutputValue(forD3));   // D3
+    uint8_t forD2 = (ssdReg >> 1) & 0x01;
+    digitalWrite(pinD2, GetOutputValue(forD2));   // D2
+    uint8_t forD3 = (ssdReg >> 0) & 0x01;
+    digitalWrite(pinD3, GetOutputValue(forD3));   // D3
     uint8_t forD4 = (ssdReg >> 0) & 0x01;
     //  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
 
@@ -109,9 +108,8 @@ void AssignSeg()
       // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
     idx = (log(ssdReg) / log(2)); // Get the log base 2
 
-  //  ssdReg = ~ssdReg; // revert
     // shifting the bits left
-    if (ssdReg == 0x08)ssdReg = 0x01;
+    if (ssdReg == 0x04)ssdReg = 0x01;
     else ssdReg = ssdReg << 1;
 }
 
@@ -128,7 +126,7 @@ int SegmentValArr[4] = { 0,0,0,0 }; // array
 // WXYZ * 0.1 => WXY.Z
 // int(WXY.Z) => WXY
 // then repeat
-void AssignVal(uint8_t val)
+void AssignVal(int val)
 {
     //  SegmentValArr = {0,0,0,0}; // reset 
     int ArrSize = sizeof(SegmentValArr) / sizeof(SegmentValArr[0]);
@@ -137,7 +135,7 @@ void AssignVal(uint8_t val)
         SegmentValArr[i] = 0;
     }
 
-    ExtractSegmentValues(val, 0, GetNumberOfDigits(int(val))); // separates WXYZ into {Z,Y,X,W}
+    ExtractSegmentValues(val, 0, GetNumberOfDigits(val)); // separates WXYZ into {Z,Y,X,W}
 
     // Set value 
     SetSegmentValue(SegmentValArr[idx]);

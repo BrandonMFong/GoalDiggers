@@ -7,7 +7,7 @@ void init_7SegmentDisplay();
 void SetSevenSegmentDisplay(int value);
 void Display();
 void AssignSeg();
-void AssignVal(uint8_t val);
+void AssignVal(int val);
 int GetOutputValue(uint8_t val);
 void ExtractSegmentValues(int val,int index_inner, int MAX);
 void SetSegmentValue(int val);
@@ -68,12 +68,13 @@ void Display()
   switch(CurrentState)
   {
     case AQIDisplay: 
-      SetSevenSegmentDisplay(222); // test value
+      SetSevenSegmentDisplay(45); // test value
       break;
     case TempDisplay: 
       SetSevenSegmentDisplay(100);
       break;
   }
+  delay(5);
 }
 
 // SEVEN SEG LOGIC
@@ -93,11 +94,11 @@ void AssignSeg()
   // only one of these segments should be on 
   // shift the bits to index 0 and AND it to get the value for the pin
   // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
-  uint8_t forD1 = (ssdReg >> 2) & 0x01;
+  uint8_t forD1 = (ssdReg >> 0) & 0x01;
   digitalWrite(pinD1, GetOutputValue(forD1));   // D1
   uint8_t forD2 = (ssdReg >> 1) & 0x01;
   digitalWrite(pinD2, GetOutputValue(forD2));   // D2
-  uint8_t forD3 = (ssdReg >> 0) & 0x01;
+  uint8_t forD3 = (ssdReg >> 2) & 0x01;
   digitalWrite(pinD3, GetOutputValue(forD3));   // D3
   uint8_t forD4 = (ssdReg >> 0) & 0x01;
 //  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
@@ -126,7 +127,7 @@ int SegmentValArr [4] = {0,0,0,0}; // array
 // WXYZ * 0.1 => WXY.Z
 // int(WXY.Z) => WXY
 // then repeat
-void AssignVal(uint8_t val)
+void AssignVal(int val)
 {
 //  SegmentValArr = {0,0,0,0}; // reset 
   int ArrSize = sizeof(SegmentValArr)/sizeof(SegmentValArr[0]);
@@ -135,7 +136,7 @@ void AssignVal(uint8_t val)
     SegmentValArr[i] = 0;
   }
   
-  ExtractSegmentValues(val,0,GetNumberOfDigits(int(val))); // separates WXYZ into {Z,Y,X,W}
+  ExtractSegmentValues(val,0,GetNumberOfDigits(val)); // separates WXYZ into {Z,Y,X,W}
 
   // Set value 
   SetSegmentValue(SegmentValArr[idx]);
