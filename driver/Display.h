@@ -26,13 +26,13 @@ volatile int CurrentState; // test value
 int pinD1 = 10; // GPIO10
 int pinD2 = 16; // GPIO16
 int pinD3 = 5;  // GPIO5
-int pinD4 = 4;  // GPIO4
+//int pinD4 = 4;  // GPIO4
 
 // LED segment control
 int pinA = 14;  // GPIO14
 int pinB = 0;   // GPIO0
 int pinC = 13;   // GPIO13
-int pinD = 1;   // GPIO3
+int pinD = 4;   // GPIO4
 int pinE = 12;   // GPIO12
 int pinF = 2;   // GPIO2
 int pinG = 9;   // GPIO9
@@ -49,11 +49,11 @@ void init_7SegmentDisplay()
   pinMode(pinD1, OUTPUT);
   pinMode(pinD2, OUTPUT);
   pinMode(pinD3, OUTPUT);
-  pinMode(pinD4, OUTPUT);
+//  pinMode(pinD4, OUTPUT);
   pinMode(pinA, OUTPUT); // good
   pinMode(pinB, OUTPUT); // good
   pinMode(pinC, OUTPUT); // good
-  pinMode(pinD, OUTPUT);
+  pinMode(pinD, OUTPUT); // good
   pinMode(pinE, OUTPUT); // good
   pinMode(pinF, OUTPUT); // good
   pinMode(pinG, OUTPUT); // good
@@ -101,7 +101,7 @@ void AssignSeg()
   uint8_t forD3 = (ssdReg >> 1) & 0x01;
   digitalWrite(pinD3, GetOutputValue(forD3));   // D3
   uint8_t forD4 = (ssdReg >> 0) & 0x01;
-  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
+//  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
 
   // since the segment register only contains one bit (assuming the register isn't complimented 
   // i can use the position of that bit to determine with segment should be on 
