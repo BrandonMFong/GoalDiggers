@@ -19,12 +19,5 @@ void loop()
   else counter++;
   
 	Display(); 
-//  digitalWrite(pinD1, HIGH);
-//  digitalWrite(pinA, LOW);
-//  digitalWrite(pinB, LOW);
-//  digitalWrite(pinC, LOW);
-////  digitalWrite(pinD, HIGH);
-//  digitalWrite(pinE, LOW);  
-//  digitalWrite(pinF, LOW);  
-//  digitalWrite(pinF, LOW);  
+  // can I save volatile variables to the eeprom?
 }
