@@ -54,6 +54,7 @@ void init_7SegmentDisplay()
   pinMode(pinD, OUTPUT);
   pinMode(pinE, OUTPUT);
   pinMode(pinF, OUTPUT);
+  pinMode(pinG, OUTPUT);
   
   ssdReg = 0x00; // init the value of the state 
 }
@@ -111,7 +112,7 @@ int SegmentValArr [4] = {0,0,0,0}; // array
 void AssignVal(uint8_t val)
 {
   // modulo 10
-  ExtractSegmentValues(val,0); // separates WXYZ into {Z,Y,X,W}
+  ExtractSegmentValues(val,0,GetNumberOfDigits(int(val))); // separates WXYZ into {Z,Y,X,W}
 
   // since the segment register only contains one bit (assuming the register isn't complimented 
   // i can use the position of that bit to determine with segment should be on 
@@ -123,15 +124,27 @@ void AssignVal(uint8_t val)
   SetSegmentValue(SegmentValArr[index]);
 }
 
+int GetNumberOfDigits(int num)
+{
+    int count = 0; 
+    while (num != 0) 
+    { 
+      num = num / 10; 
+      ++count; 
+    }
+    return count; 
+}
+
 // assume val is int
 // result should be in SegmentValArr array 
-void ExtractSegmentValues(int val,int index)
+// recurses based on the MAX number of digits
+void ExtractSegmentValues(int val,int index, int MAX)
 {
   int temp = val % 10;
   SegmentValArr[index] = temp;
 
   // int(val*0.1) shifts the number to the right
-  if(index < 3) ExtractSegmentValues(int(val*0.1),index+1); // recurse into function if we still have some of the number left 
+  if(index < MAX) ExtractSegmentValues(int(val*0.1),index+1); // recurse into function if we still have some of the number left 
 }
 
 // let 1'b xxxx xxxx 
