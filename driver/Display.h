@@ -89,16 +89,15 @@ void SetSevenSegmentDisplay(int value)
 // <D4><D3><D2><D1>
 void AssignSeg()
 {
-//  ssdReg = ~ssdReg; // flip
   
   // only one of these segments should be on 
   // shift the bits to index 0 and AND it to get the value for the pin
   // bits -> xxxx <pinD4><pinD3><pinD2><pin1>
-  uint8_t forD1 = (ssdReg >> 3) & 0x01;
+  uint8_t forD1 = (ssdReg >> 2) & 0x01;
   digitalWrite(pinD1, GetOutputValue(forD1));   // D1
-  uint8_t forD2 = (ssdReg >> 2) & 0x01;
+  uint8_t forD2 = (ssdReg >> 1) & 0x01;
   digitalWrite(pinD2, GetOutputValue(forD2));   // D2
-  uint8_t forD3 = (ssdReg >> 1) & 0x01;
+  uint8_t forD3 = (ssdReg >> 0) & 0x01;
   digitalWrite(pinD3, GetOutputValue(forD3));   // D3
   uint8_t forD4 = (ssdReg >> 0) & 0x01;
 //  digitalWrite(pinD4, GetOutputValue(forD4));   // D4
