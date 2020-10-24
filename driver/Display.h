@@ -9,7 +9,7 @@ void Display();
 void AssignSeg(uint8_t val);
 void AssignVal(uint8_t val);
 void GetOutputValue(uint8_t val);
-int [] ExtractSegmentValues(uint8_t val);
+void ExtractSegmentValues(int val,int index);
 
 /* IMPORTANT VARIALBLES START */
 int test_AQI = 0; // temp
@@ -31,7 +31,7 @@ int pinD = 7;   // GPIO7
 int pinE = 6;   // GPIO6
 int pinF = 2;   // GPIO2
 
-volatile uint8_t ssdReg;
+volatile uint8_t ssdReg; // IMPORTANT
 
 /* IMPORTANT VARIALBLES END */
 
@@ -107,10 +107,22 @@ int SegmentValArr [4] = {0,0,0,0};
 void AssignVal(uint8_t val, )
 {
   // modulo 10
-  SegmentValArr = ExtractSegmentValues(val);
+  ExtractSegmentValues(val,0); // separates WXYZ into {Z,Y,X,W}
+
+  // since the segment register only contains one bit (assuming the register isn't complimented 
+  // i can use the position of that bit to determine with segment should be on 
+  // 1000 = 8, log2(8) = 3 
+  // therefore SegmentValArr[3] will give me the digit for the 4 segment (the left most segment)
+  int index = log(ssdReg)/log(2); // Get the log base 2
+  
 }
 
-int [] ExtractSegmentValues(uint8_t val)
+// assume val is int
+ExtractSegmentValues(int val,int index)
 {
-  
+  int temp = val % 10;
+  SegmentValArr[index] = temp;
+
+  // int(val*0.1) shifts the number to the right
+  if(index < 3) ExtractSegmentValues(int(val*0.1),index+1); // recurse into function if we still have some of the number left 
 }
