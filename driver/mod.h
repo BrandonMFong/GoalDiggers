@@ -3,6 +3,27 @@
 #define AQIThreshold 300
 #define TempFThreshold 100
 
+/******** PINS *****************/
+
+// Segment control 
+int pinD1 = 10; // GPIO10
+int pinD2 = 16; // GPIO16
+int pinD3 = 5;  // GPIO5
+//int pinD4 = 4;  // GPIO4
+
+// LED segment control
+int pinA = 14;  // GPIO14
+int pinB = 0;   // GPIO0
+int pinC = 13;   // GPIO13
+int pinD = 1;   // GPIO1 tx
+int pinE = 12;   // GPIO12
+int pinF = 2;   // GPIO2
+int pinG = 15;   // GPIO15
+
+const int buzzerPin = 4; // GPIO4
+
+const int joyButtonPin = 3;     // the number of the pushbutton pin, note the button is active high
+
 /************** DISPLAY MOD ******************/
 /* PROTOTYPES START */
 void init_Display();  
@@ -25,20 +46,6 @@ const uint8_t AQIDisplay = 0x00;
 const uint8_t TempDisplay = 0x01;
 volatile int CurrentState; // test value
 
-// Segment control 
-int pinD1 = 10; // GPIO10
-int pinD2 = 16; // GPIO16
-int pinD3 = 5;  // GPIO5
-//int pinD4 = 4;  // GPIO4
-
-// LED segment control
-int pinA = 14;  // GPIO14
-int pinB = 0;   // GPIO0
-int pinC = 13;   // GPIO13
-int pinD = 4;   // GPIO4
-int pinE = 12;   // GPIO12
-int pinF = 2;   // GPIO2
-int pinG = 15;   // GPIO15
 
 volatile uint8_t ssdReg; // IMPORTANT
 volatile int idx; // IMPORTANT
@@ -55,7 +62,6 @@ void Buzzer();
 /* PROTOTYPES END */
 
 /* IMPORTANT VARIALBLES START */
-const int joyButtonPin = 3;     // the number of the pushbutton pin, note the button is active high
 //const int ledPin =  13;      // the number of the LED pin
 
 // variables will change:
@@ -69,5 +75,4 @@ volatile uint8_t BuzzerState = OFF; // BUZZER STATE
 volatile bool IsSnoozed = false;
 volatile bool CriticalAQI = false; // for LED
 volatile bool CriticalTempF = false; // for LED
-const int buzzerPin = 1; // GPIO1
 /* IMPORTANT VARIALBLES END */

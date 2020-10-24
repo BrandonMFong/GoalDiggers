@@ -12,7 +12,9 @@ ICACHE_RAM_ATTR void turnOffBuzzer()
 /* FUNCTIONS START */
 
 // Analog pin does not initialization
-void init_Controls() {
+void init_Controls() 
+{
+  // No room for LED 
   // initialize the LED pin as an output:
 //  pinMode(ledPin, OUTPUT);
 //  digitalWrite(ledPin, HIGH);
@@ -27,6 +29,7 @@ void init_Controls() {
 
   // init buzzer output pin 
 //  debug output at boot, boot fails if pulled LOW
+  pinMode(buzzerPin,OUTPUT);
 }
 
 
@@ -54,21 +57,16 @@ void TestValues()
   if(AQI >= AQIThreshold && !IsSnoozed) BuzzerState = ON; // testing buzzer
   if(TempF >= TempFThreshold && !IsSnoozed) BuzzerState = ON; // testing 
 
-//  Buzzer();
+  // test buzzer and output 
+  if(BuzzerState) // if ON
+  {
+    // turn on buzzer, write to it
+    digitalWrite(buzzerPin, HIGH); 
+  }
+  else
+  {
+    // turn it off, write digital 0 to S pin 
+    digitalWrite(buzzerPin, LOW); 
+  }
 }
-
-//int BuzzCounter = 0;
-//void Buzzer()
-//{
-//  if(BuzzerState)
-//  {
-//    // turn on buzzer, write to it
-//    digitalWrite(buzzerPin, HIGH); 
-//  }
-//  else
-//  {
-//    // turn it off, write digital 0 to S pin 
-//    digitalWrite(buzzerPin, LOW); 
-//  }
-//}
 /* FUNCTIONS END */
