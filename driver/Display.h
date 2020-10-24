@@ -34,6 +34,7 @@ int pinC = 8;   // GPIO8
 int pinD = 7;   // GPIO7
 int pinE = 6;   // GPIO6
 int pinF = 2;   // GPIO2
+int pinG = 9;   // GPIO9
 
 volatile uint8_t ssdReg; // IMPORTANT
 
@@ -135,10 +136,19 @@ void ExtractSegmentValues(int val,int index)
 
 // let 1'b xxxx xxxx 
 // map them to pin variables 
-// so 1'b xxAB CDEF
+// so 1'b xABC DEFG
 uint8_t SSDValue [10] = 
 {
-  
+  0x7E, // 0111 1110 = 0 
+  0x60, // 0110 0000 = 1
+  0x6D, // 0110 1101 = 2
+  0x79, // 0111 1001 = 3
+  0x33, // 0011 0011 = 4
+  0x5B, // 0101 1011 = 5
+  0x5F, // 0101 1111 = 6 
+  0x70, // 0111 0000 = 7
+  0x7F, // 0111 1111 = 8
+  0x73 // 0111 0011 = 9 
 };
 // assuming the val is less then 10
 void SetSegmentValue(int val) 
