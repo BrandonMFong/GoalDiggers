@@ -118,6 +118,7 @@ void AssignVal(uint8_t val, )
 }
 
 // assume val is int
+// result should be in SegmentValArr array 
 ExtractSegmentValues(int val,int index)
 {
   int temp = val % 10;
