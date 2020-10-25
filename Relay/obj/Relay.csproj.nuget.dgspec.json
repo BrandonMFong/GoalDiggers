@@ -37,6 +37,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.25, )"
+            },
+            "Microsoft.PowerShell.Commands.Utility": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Unofficial.Microsoft.mshtml": {
+              "target": "Package",
+              "version": "[7.0.3300, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
