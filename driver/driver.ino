@@ -41,5 +41,5 @@ void loop()
   Display(); // Displays AQI/Temp to SSD
 
   // Keep so we can use this to debug Buzzer
-  Serial.println(BuzzerState);
+//  Serial.println(BuzzerState);
 }

@@ -14,6 +14,8 @@ B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemE
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\Namotion.Reflection.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\NJsonSchema.dll
+B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\WebDriver.Support.dll
+B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\WebDriver.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.CodeDom.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.Diagnostics.EventLog.dll
@@ -27,7 +29,6 @@ B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.Security.Permiss
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.Threading.AccessControl.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
-B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\Microsoft.mshtml.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
@@ -141,7 +142,6 @@ B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\runtimes\win\lib\netsta
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\System.Windows.Forms.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\bin\Debug\netcoreapp3.1\Interop.SHDocVw.dll
-B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csprojAssemblyReference.cache
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Interop.SHDocVw.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csproj.ResolveComReference.cache
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.AssemblyInfoInputs.cache
@@ -151,3 +151,4 @@ B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csproj.CopyComple
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.pdb
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.genruntimeconfig.cache
+B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csprojAssemblyReference.cache

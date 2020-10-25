@@ -641,6 +641,33 @@
           "lib/netstandard2.0/NJsonSchema.dll": {}
         }
       },
+      "PhantomJS/2.1.1": {
+        "type": "package"
+      },
+      "Selenium.Support/3.141.0": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "3.141.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {}
+        }
+      },
+      "Selenium.WebDriver/3.141.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/WebDriver.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {}
+        }
+      },
       "System.CodeDom/4.7.0": {
         "type": "package",
         "compile": {
@@ -1325,15 +1352,6 @@
             "assetType": "runtime",
             "rid": "win"
           }
-        }
-      },
-      "Unofficial.Microsoft.mshtml/7.0.3300": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.mshtml.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.mshtml.dll": {}
         }
       }
     }
@@ -2037,6 +2055,109 @@
         "lib/netstandard2.0/NJsonSchema.xml",
         "njsonschema.10.1.23.nupkg.sha512",
         "njsonschema.nuspec"
+      ]
+    },
+    "PhantomJS/2.1.1": {
+      "sha512": "31xkN06TjBGQ9/8sGkm8IAN4DM/gMDChryu9Pp1ng9OK/xLPL2ZNbAgRCaB2g9vDkUDvhHjBEtP9JRenMDiHUg==",
+      "type": "package",
+      "path": "phantomjs/2.1.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/phantomjs-license.txt",
+        "phantomjs.2.1.1.nupkg.sha512",
+        "phantomjs.nuspec",
+        "tools/install.ps1",
+        "tools/phantomjs/ChangeLog",
+        "tools/phantomjs/LICENSE.BSD",
+        "tools/phantomjs/README.md",
+        "tools/phantomjs/examples/arguments.js",
+        "tools/phantomjs/examples/child_process-examples.js",
+        "tools/phantomjs/examples/colorwheel.js",
+        "tools/phantomjs/examples/countdown.js",
+        "tools/phantomjs/examples/detectsniff.js",
+        "tools/phantomjs/examples/echoToFile.js",
+        "tools/phantomjs/examples/features.js",
+        "tools/phantomjs/examples/fibo.js",
+        "tools/phantomjs/examples/hello.js",
+        "tools/phantomjs/examples/injectme.js",
+        "tools/phantomjs/examples/loadspeed.js",
+        "tools/phantomjs/examples/loadurlwithoutcss.js",
+        "tools/phantomjs/examples/modernizr.js",
+        "tools/phantomjs/examples/module.js",
+        "tools/phantomjs/examples/netlog.js",
+        "tools/phantomjs/examples/netsniff.js",
+        "tools/phantomjs/examples/openurlwithproxy.js",
+        "tools/phantomjs/examples/outputEncoding.js",
+        "tools/phantomjs/examples/page_events.js",
+        "tools/phantomjs/examples/pagecallback.js",
+        "tools/phantomjs/examples/phantomwebintro.js",
+        "tools/phantomjs/examples/post.js",
+        "tools/phantomjs/examples/postjson.js",
+        "tools/phantomjs/examples/postserver.js",
+        "tools/phantomjs/examples/printenv.js",
+        "tools/phantomjs/examples/printheaderfooter.js",
+        "tools/phantomjs/examples/printmargins.js",
+        "tools/phantomjs/examples/rasterize.js",
+        "tools/phantomjs/examples/render_multi_url.js",
+        "tools/phantomjs/examples/responsive-screenshot.js",
+        "tools/phantomjs/examples/run-jasmine.js",
+        "tools/phantomjs/examples/run-jasmine2.js",
+        "tools/phantomjs/examples/run-qunit.js",
+        "tools/phantomjs/examples/scandir.js",
+        "tools/phantomjs/examples/server.js",
+        "tools/phantomjs/examples/serverkeepalive.js",
+        "tools/phantomjs/examples/simpleserver.js",
+        "tools/phantomjs/examples/sleepsort.js",
+        "tools/phantomjs/examples/stdin-stdout-stderr.js",
+        "tools/phantomjs/examples/universe.js",
+        "tools/phantomjs/examples/unrandomize.js",
+        "tools/phantomjs/examples/useragent.js",
+        "tools/phantomjs/examples/version.js",
+        "tools/phantomjs/examples/waitfor.js",
+        "tools/phantomjs/examples/walk_through_frames.js",
+        "tools/phantomjs/phantomjs.exe",
+        "tools/phantomjs/third-party.txt",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "Selenium.Support/3.141.0": {
+      "sha512": "F4sxMCXGyqWtbw5qsniJRgza2UsBnslHwFgNA2p7hPxvJhqg73lyXu/ZscJ7FSfRvq3eJrosysv92+4sZ3vWsg==",
+      "type": "package",
+      "path": "selenium.support/3.141.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/WebDriver.Support.dll",
+        "lib/net35/WebDriver.Support.xml",
+        "lib/net40/WebDriver.Support.dll",
+        "lib/net40/WebDriver.Support.xml",
+        "lib/net45/WebDriver.Support.dll",
+        "lib/net45/WebDriver.Support.xml",
+        "lib/netstandard2.0/WebDriver.Support.dll",
+        "lib/netstandard2.0/WebDriver.Support.xml",
+        "selenium.support.3.141.0.nupkg.sha512",
+        "selenium.support.nuspec"
+      ]
+    },
+    "Selenium.WebDriver/3.141.0": {
+      "sha512": "wPqzXO3f79DzqauTZSzLMKiaBCN0Z2Mv7KvWP+hnV6EL88zh/pJJnFtdIR1X5wa3hsTOpF/bBJs45rz7kArsiA==",
+      "type": "package",
+      "path": "selenium.webdriver/3.141.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/WebDriver.dll",
+        "lib/net35/WebDriver.xml",
+        "lib/net40/WebDriver.dll",
+        "lib/net40/WebDriver.xml",
+        "lib/net45/WebDriver.dll",
+        "lib/net45/WebDriver.xml",
+        "lib/netstandard2.0/WebDriver.dll",
+        "lib/netstandard2.0/WebDriver.xml",
+        "selenium.webdriver.3.141.0.nupkg.sha512",
+        "selenium.webdriver.nuspec"
       ]
     },
     "System.CodeDom/4.7.0": {
@@ -4341,25 +4462,15 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "Unofficial.Microsoft.mshtml/7.0.3300": {
-      "sha512": "Nv4Bn/0y8ab6f5QnEXoDX49C0U4Iz2nPgHbyg35UV+cGoFS5QkPWNwp461cOEK1O0c/u8TXQ3THP3rdEHmhjtg==",
-      "type": "package",
-      "path": "unofficial.microsoft.mshtml/7.0.3300",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.mshtml.dll",
-        "unofficial.microsoft.mshtml.7.0.3300.nupkg.sha512",
-        "unofficial.microsoft.mshtml.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "HtmlAgilityPack >= 1.11.25",
       "Microsoft.PowerShell.Commands.Utility >= 7.0.3",
-      "Unofficial.Microsoft.mshtml >= 7.0.3300"
+      "PhantomJS >= 2.1.1",
+      "Selenium.Support >= 3.141.0",
+      "Selenium.WebDriver >= 3.141.0"
     ]
   },
   "packageFolders": {
@@ -4407,9 +4518,17 @@
             "target": "Package",
             "version": "[7.0.3, )"
           },
-          "Unofficial.Microsoft.mshtml": {
+          "PhantomJS": {
             "target": "Package",
-            "version": "[7.0.3300, )"
+            "version": "[2.1.1, )"
+          },
+          "Selenium.Support": {
+            "target": "Package",
+            "version": "[3.141.0, )"
+          },
+          "Selenium.WebDriver": {
+            "target": "Package",
+            "version": "[3.141.0, )"
           }
         },
         "imports": [
@@ -4430,17 +4549,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Unofficial.Microsoft.mshtml 7.0.3300' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Unofficial.Microsoft.mshtml",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }

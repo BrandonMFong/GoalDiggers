@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pkeJwTcXkYKU+OQotXtU3CcIV4sRwDnfCP/BIStlwdcU9ItQq2m3Z1YjMepG5+oBIlKzy6zLi2PbS5aLJAx4tQ==",
+  "dgSpecHash": "nXi5qAEWV09KZozP8/Lxfsrus/wA40kgzUoFac7fGrIfu11f/HZC2qZjXXG3NC+VnFp8ARrwMSOAHsmVIPISFw==",
   "success": true,
   "projectFilePath": "B:\\SOURCE\\Repo\\GoalDiggers\\Relay\\Relay.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,9 @@
     "C:\\Users\\fongm\\.nuget\\packages\\namotion.reflection\\1.0.11\\namotion.reflection.1.0.11.nupkg.sha512",
     "C:\\Users\\fongm\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\fongm\\.nuget\\packages\\njsonschema\\10.1.23\\njsonschema.10.1.23.nupkg.sha512",
+    "C:\\Users\\fongm\\.nuget\\packages\\phantomjs\\2.1.1\\phantomjs.2.1.1.nupkg.sha512",
+    "C:\\Users\\fongm\\.nuget\\packages\\selenium.support\\3.141.0\\selenium.support.3.141.0.nupkg.sha512",
+    "C:\\Users\\fongm\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
     "C:\\Users\\fongm\\.nuget\\packages\\system.codedom\\4.7.0\\system.codedom.4.7.0.nupkg.sha512",
     "C:\\Users\\fongm\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\fongm\\.nuget\\packages\\system.collections.immutable\\1.5.0\\system.collections.immutable.1.5.0.nupkg.sha512",
@@ -71,19 +74,7 @@
     "C:\\Users\\fongm\\.nuget\\packages\\system.threading.accesscontrol\\4.7.0\\system.threading.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\fongm\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\fongm\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.3\\system.threading.tasks.extensions.4.5.3.nupkg.sha512",
-    "C:\\Users\\fongm\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\fongm\\.nuget\\packages\\unofficial.microsoft.mshtml\\7.0.3300\\unofficial.microsoft.mshtml.7.0.3300.nupkg.sha512"
+    "C:\\Users\\fongm\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Unofficial.Microsoft.mshtml 7.0.3300' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Unofficial.Microsoft.mshtml",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "logs": []
 }
