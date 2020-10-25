@@ -20,6 +20,7 @@ void setup()
   // Test values
   AQI = 315; // put a value above AQIThreshold to init ON for buzzer
   TempF = 50;
+  BuzzerState = 1;
 
   /* NETWORK */
   init_Network();
