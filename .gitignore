@@ -9,7 +9,7 @@ docs/ESP8266FS-0.5.0.zip
 docs/ESP8266FS-0.5.0/*
 QuADApi/bin/*
 QuADApi/.vs/*
-QuADApi/.obj/*
+QuADApi/obj/*
 QuADApi/obj/Release/*
 QuADApi/obj/Debug/*
 QuADApi/bin/Release/*
