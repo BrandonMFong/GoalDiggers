@@ -29,6 +29,7 @@ void init_Controls()
 
   // init buzzer output pin 
 //  debug output at boot, boot fails if pulled LOW
+  pinMode(buzzerPin, FUNCTION_3); // enable rx to be gpio
   pinMode(buzzerPin,OUTPUT);
 }
 

@@ -18,7 +18,7 @@ const char fingerprint[] PROGMEM = "fe 3a b4 66 4e b7 88 a4 46 68 4d fb 17 51 e0
 //                    Power on setup
 //=======================================================================
  
-void setup() {
+void init_http() {
   delay(1000);
   Serial.begin(115200);
   WiFi.mode(WIFI_OFF);        //Prevents reconnection issue (taking too long to connect)
@@ -46,7 +46,7 @@ void setup() {
 //=======================================================================
 //                    Main Program Loop
 //=======================================================================
-void loop() {
+void http() {
   WiFiClientSecure httpsClient;    //Declare object of class WiFiClient
  
   Serial.println(host);

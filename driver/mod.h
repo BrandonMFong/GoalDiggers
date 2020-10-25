@@ -81,3 +81,6 @@ volatile bool CriticalTempF = false; // for LED
 void init_Network();
 void Network();
 void handleSpecificArg();
+
+String key = "Artemis2076";
+String SSIDstring = "Elements";
