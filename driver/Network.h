@@ -8,8 +8,6 @@
 
 ESP8266WebServer server(80);   //Web server object. Will be listening in port 80 (default for HTTP)
 //https://techtutorialsx.com/2016/10/22/esp8266-webserver-getting-query-parameters/
-//volatile int AQI = 0;
-//volatile double TempF = 0;
 void handleSpecificArg() 
 { 
   String AQImessage = "";
@@ -60,8 +58,4 @@ void init_Network()
   Serial.println("Server listening");   
 }
 
-void Network() 
-{
-  server.handleClient();    //Handling of incoming requests
-//  Serial.println(AQI);
-}
+void Network() {server.handleClient(); }   //Handling of incoming requests

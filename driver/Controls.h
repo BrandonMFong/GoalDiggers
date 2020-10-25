@@ -10,6 +10,12 @@ ICACHE_RAM_ATTR void turnOffBuzzer()
   IsSnoozed_AQI = true; // Snoozed to make sure the machine knows the user was notified
 }
 
+void stopBuzzByTimer()
+{
+  turnOffBuzzer();
+  flipper.detach(); // stop timer permanently
+}
+
 /* INTERRUPTS END */
 
 /* FUNCTIONS START */
@@ -20,8 +26,6 @@ void init_Controls()
   Serial.println("Initializing Controls");
   // No room for LED 
   // initialize the LED pin as an output:
-//  pinMode(ledPin, OUTPUT);
-//  digitalWrite(ledPin, HIGH);
 
   // https://www.youtube.com/watch?v=uBvnvf35YJ8
   // initialize the pushbutton pin as an input:
@@ -37,6 +41,11 @@ void init_Controls()
   // init buzzer output pin 
   Serial.println("  init Buzzer [OUTPUT]");
   pinMode(buzzerPin,OUTPUT);
+
+  // boot test init
+  BuzzerState = ON;
+  flipper.attach(buzzTime, stopBuzzByTimer);
+
 }
 
 

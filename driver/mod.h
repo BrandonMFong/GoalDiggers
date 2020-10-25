@@ -1,3 +1,4 @@
+#include "Timer.h"
 #define OFF 0
 #define ON 1
 #define AQIThreshold 300
@@ -59,6 +60,8 @@ void ReadAxis();
 void button_ISR();
 void TestValues();
 void Buzzer();
+void stopBuzzByTimer();
+Ticker flipper;
 /* PROTOTYPES END */
 
 /* IMPORTANT VARIALBLES START */
@@ -76,6 +79,7 @@ volatile bool IsSnoozed_AQI = false;
 volatile bool IsSnoozed_TempF = false;
 volatile bool CriticalAQI = false; // for LED
 volatile bool CriticalTempF = false; // for LED
+const int buzzTime = 3;
 /* IMPORTANT VARIALBLES END */
 
 /******************* NETWORKS MOD *****************/
