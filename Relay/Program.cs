@@ -108,17 +108,5 @@ namespace QuAD
             else throw new Exception("Something bad happened");
             return HTML;
         }
-        //static public string OpenBrowser(string url)
-        //{
-        //    object o = null;
-        //    SHDocVw.InternetExplorer ie = new SHDocVw.InternetExplorerClass();
-        //    IWebBrowserApp wb = (IWebBrowserApp)ie;
-        //    wb.Visible = false;
-        //    //Do anything else with the window here that you wish
-        //    wb.Navigate(url, ref o, ref o, ref o, ref o);
-        //    mshtml.IHTMLDocument2 htmlDoc = wb.Document as mshtml.IHTMLDocument2;
-        //    ie.Quit();
-        //    return htmlDoc.body.outerHTML;
-        //}
     }
 }

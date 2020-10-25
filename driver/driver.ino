@@ -10,6 +10,7 @@ int counter = 0;
 void setup()
 {
   Serial.begin(115200);
+  bootPrint();
 //  Serial.begin(115200); // turn on when you are debugging for buzzer
   /* SEVEN SEGMENT */
   init_Display();
@@ -17,9 +18,9 @@ void setup()
   /* BUZZER, JOY STICK, LED (control signals) */
   init_Controls();
 
-  // Test values
-  AQI = 315; // put a value above AQIThreshold to init ON for buzzer
-  TempF = 50;
+  // initial values, good for testing display
+  AQI = 444; 
+  TempF = 444;
   BuzzerState = 1;
   /* NETWORK */
   init_Network();
@@ -41,5 +42,5 @@ void loop()
   Display(); // Displays AQI/Temp to SSD
 
   // Keep so we can use this to debug Buzzer
-//  Serial.println(BuzzerState);
+//  Serial.println(digitalRead(1));
 }

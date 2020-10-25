@@ -84,3 +84,14 @@ void handleSpecificArg();
 
 String key = "Artemis2076";
 String SSIDstring = "Elements";
+
+/**************** MISC ***************/
+void bootPrint()
+{
+  Serial.println("Initializing QuAD (Quality Air Detector)\n");
+  Serial.println("Engineers: ");
+  Serial.println("  Armando Santos- Landa");
+  Serial.println("  Thomas Swanson");
+  Serial.println("  Brandon Fong");
+  Serial.println("Copyright 2020\n\n");
+}

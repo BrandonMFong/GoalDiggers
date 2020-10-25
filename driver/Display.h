@@ -6,6 +6,8 @@
 // INIT
 void init_Display()
 {
+  Serial.println("Initializing IO pins");
+  
 //https://electronics.stackexchange.com/questions/30238/how-to-invert-a-digital-signal/117087
   pinMode(1, FUNCTION_3); // enable tx to be gpio
 //  pinMode(1, OUTPUT); // FAILS if low
@@ -18,7 +20,11 @@ void init_Display()
   pinMode(pinA, OUTPUT); // good
   pinMode(pinB, OUTPUT); // good
   pinMode(pinC, OUTPUT); // good
+
+  // using tx
+  pinMode(pinD, FUNCTION_3); // enable tx to be gpio
   pinMode(pinD, OUTPUT); // good
+  
   pinMode(pinE, OUTPUT); // good
   pinMode(pinF, OUTPUT); // good
   pinMode(pinG, OUTPUT); // good

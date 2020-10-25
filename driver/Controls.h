@@ -14,6 +14,7 @@ ICACHE_RAM_ATTR void turnOffBuzzer()
 // Analog pin does not initialization
 void init_Controls() 
 {
+  Serial.println("Initializing Controls");
   // No room for LED 
   // initialize the LED pin as an output:
 //  pinMode(ledPin, OUTPUT);
@@ -21,15 +22,17 @@ void init_Controls()
 
   // https://www.youtube.com/watch?v=uBvnvf35YJ8
   // initialize the pushbutton pin as an input:
+  Serial.println("  init Joystick Button [INPUT]");
+  Serial.println("  init Joystick x Axis [INPUT]");
   pinMode(joyButtonPin, FUNCTION_3); // enable rx to be gpio
   pinMode(joyButtonPin, INPUT);
 
   // attach interrupt
+  Serial.println("    applying interrupt");
   attachInterrupt(digitalPinToInterrupt(joyButtonPin), turnOffBuzzer, FALLING); 
 
   // init buzzer output pin 
-//  debug output at boot, boot fails if pulled LOW
-  pinMode(buzzerPin, FUNCTION_3); // enable rx to be gpio
+  Serial.println("  init Buzzer [OUTPUT]");
   pinMode(buzzerPin,OUTPUT);
 }
 
@@ -55,8 +58,14 @@ void ReadAxis()
 // BUZZER LOGIC TODO
 void TestValues()
 {
-  if(AQI >= AQIThreshold && !IsSnoozed) BuzzerState = ON; // testing buzzer
-  if(TempF >= TempFThreshold && !IsSnoozed) BuzzerState = ON; // testing 
+  if(AQI >= AQIThreshold && !IsSnoozed)
+  {
+    BuzzerState = ON; // testing buzzer
+  }
+  if(TempF >= TempFThreshold && !IsSnoozed) 
+  {
+    BuzzerState = ON; // testing 
+  }
 
   // test buzzer and output 
   if(BuzzerState) // if ON
