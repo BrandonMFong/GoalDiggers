@@ -56,7 +56,7 @@ Project was submitted to
 Building Technology for Social Good!
 
 ## Credits
-Mel Kadar (Business Manager)
-Armando Santos-Landa (Engineer)
-Thomas Swanson (Engineer)
-Brandon Fong (Engineer)
+Mel Kadar (Business Manager)<br />
+Armando Santos-Landa (Engineer)<br />
+Thomas Swanson (Engineer)<br />
+Brandon Fong (Engineer)<br />
