@@ -47,16 +47,16 @@ This device is only in its first iteration.  So there may be some bugs.  This pr
 - Flow chart
   - ![QuAD Flowchart](https://github.com/BrandonMFong/QuAD/blob/main/img/QuAD.Flow.png)
 - QuAD Finite State Machine
-  - ![Finite State Machine](https://github.com/BrandonMFong/QuAD/blob/main/img/States.v4.png)
+  - ![Finite State Machine](https://github.com/BrandonMFong/QuAD/blob/main/img/States.v5.png)
 
 ## Contributing
-Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for [setting guidelines for repository contributors](https://help.github.com/articles/setting-guidelines-for-repository-contributors/).
-
-### Setup
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Project was submitted to 
+[2020 Virtual IoT Hackathon](https://docs.google.com/document/d/e/2PACX-1vSoZdG2YSPsEtawXJnYKJOsn27L2ftez70Ca6tAhft8WLVZHQE_9DzEIeb2izOIFvzIDDjxzc-AuOFa/pub)
+@ Sonoma State University 
+Building Technology for Social Good!
 
 ## Credits
-Include a section for credits in order to highlight and link to the authors of your project.
-
-## License
-Finally, include a section for the license of your project. For more information on choosing a license, check out GitHub’s [licensing guide](https://choosealicense.com/)!
+Mel Kadar (Business Manager)
+Armando Santos-Landa (Engineer)
+Thomas Swanson (Engineer)
+Brandon Fong (Engineer)
