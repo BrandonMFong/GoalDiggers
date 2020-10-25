@@ -4,7 +4,10 @@
 ICACHE_RAM_ATTR void turnOffBuzzer()
 {
   BuzzerState = 0; // Turns off buzzer
-  IsSnoozed = true; // Snoozed to make sure the machine knows the user was notified
+
+  // snoozing both for good measure
+  IsSnoozed_TempF = true; // Snoozed to make sure the machine knows the user was notified
+  IsSnoozed_AQI = true; // Snoozed to make sure the machine knows the user was notified
 }
 
 /* INTERRUPTS END */
@@ -58,13 +61,23 @@ void ReadAxis()
 // BUZZER LOGIC TODO
 void TestValues()
 {
-  if(AQI >= AQIThreshold && !IsSnoozed)
+  if(AQI >= AQIThreshold)
   {
-    BuzzerState = ON; // testing buzzer
+    if(!IsSnoozed_AQI) BuzzerState = ON; // testing buzzer
   }
-  if(TempF >= TempFThreshold && !IsSnoozed) 
+  else
   {
-    BuzzerState = ON; // testing 
+    BuzzerState = OFF;
+    IsSnoozed_AQI = false;
+  }
+  if(TempF >= TempFThreshold) 
+  {
+    if(!IsSnoozed_TempF) BuzzerState = ON; // testing 
+  }
+  else
+  {
+    BuzzerState = OFF;
+    IsSnoozed_TempF = false;
   }
 
   // test buzzer and output 

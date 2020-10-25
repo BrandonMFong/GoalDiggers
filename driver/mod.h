@@ -72,7 +72,8 @@ volatile int Xaxis = 0; // safe value
 const int Apin0 = A0;
 
 volatile uint8_t BuzzerState = OFF; // BUZZER STATE
-volatile bool IsSnoozed = false;
+volatile bool IsSnoozed_AQI = false;
+volatile bool IsSnoozed_TempF = false;
 volatile bool CriticalAQI = false; // for LED
 volatile bool CriticalTempF = false; // for LED
 /* IMPORTANT VARIALBLES END */

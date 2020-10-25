@@ -146,9 +146,9 @@ B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Interop.SHDocVw.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csproj.ResolveComReference.cache
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.AssemblyInfoInputs.cache
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.AssemblyInfo.cs
-B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csproj.CoreCompileInputs.cache
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csproj.CopyComplete
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.dll
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.pdb
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.genruntimeconfig.cache
 B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csprojAssemblyReference.cache
+B:\SOURCE\Repo\GoalDiggers\Relay\obj\Debug\netcoreapp3.1\Relay.csproj.CoreCompileInputs.cache

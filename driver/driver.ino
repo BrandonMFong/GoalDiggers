@@ -9,21 +9,20 @@ int counter = 0;
 //=======================================================================
 void setup()
 {
-  Serial.begin(115200);
-  bootPrint();
-//  Serial.begin(115200); // turn on when you are debugging for buzzer
+  /* NETWORK */
+  init_Network();
+  
   /* SEVEN SEGMENT */
   init_Display();
 
   /* BUZZER, JOY STICK, LED (control signals) */
   init_Controls();
 
+  bootPrint();
+  
   // initial values, good for testing display
   AQI = 444; 
   TempF = 444;
-  BuzzerState = 1;
-  /* NETWORK */
-  init_Network();
 }
 
 
@@ -32,10 +31,6 @@ void setup()
 //=======================================================================
 void loop()
 {
-
-  // Network method, TODO Thomas
-
-
   Network(); // Get location & AQI/Temp
   TestValues(); // Compares AQI/Temp to threshold
   ReadAxis(); // Reads joystick

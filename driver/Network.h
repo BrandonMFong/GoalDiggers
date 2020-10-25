@@ -42,6 +42,7 @@ void handleSpecificArg()
 
 void init_Network() 
 {
+  Serial.begin(115200);
   WiFi.begin(SSIDstring, key); //Connect to the WiFi network
   
   while (WiFi.status() != WL_CONNECTED) //Wait for connection
