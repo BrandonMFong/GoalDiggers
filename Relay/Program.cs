@@ -66,7 +66,11 @@ namespace QuAD
             IWebElement TempValElem = driver.FindElement(By.ClassName("weather-value"));
             TempF = Int32.Parse(TempValElem.GetAttribute("innerHTML").ToString());
 
-            Console.WriteLine(TempF.ToString());
+            //Console.WriteLine(TempF.ToString());
+
+            string nodeUrlstring = "http://192.168.1.36/Values?AQI=" + AQI.ToString() + "&TempF=" + TempF.ToString(); // construct string
+
+            driver.Url = nodeUrlstring;
         }
 
         /// <summary>
