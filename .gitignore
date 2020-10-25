@@ -13,3 +13,5 @@ Relay/Relay.csproj
 Relay/bin/*
 Relay/.vs/*
 Relay/.obj/*
+Relay/obj/Release/*
+Relay/obj/Debug/*
